@@ -6,6 +6,14 @@ back to /output (the sandbox path) when the variable is unset.
 """
 
 import os
+import sys
+
+# The grader launches with `python3 -P -s`, which leaves this script's
+# own folder off sys.path, so point the importer at it before the
+# sibling modules are pulled in.
+_here = os.path.dirname(os.path.abspath(__file__))
+if _here not in sys.path:
+    sys.path.insert(0, _here)
 
 import frontpage
 from news_data import DATA
